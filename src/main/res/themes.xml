@@ -1,0 +1,122 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AptivistCareers" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue_300</item>
+        <item name="colorPrimaryVariant">@color/blue_400</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_500</item>
+        <item name="colorSecondaryVariant">@color/blue_500</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!--Splash Screen theme Android < 11 -->
+    <style name="Theme.App.Starting" parent="Theme.AptivistCareers">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+    <style name="ContactDetailsLinks" parent="subtitle1">
+        <item name="android:textColor">@color/blue_500</item>
+    </style>
+
+    <!-- the theme applied to the application or activity -->
+
+    <style name="h1" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/h1Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">@color/h1_color</item>
+    </style>
+
+    <style name="h2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/h2Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_light</item>
+        <item name="android:textColor">@color/h2_color</item>
+    </style>
+
+    <style name="h3" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/h3Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_normal</item>
+        <item name="android:textColor">@color/h3_color</item>
+    </style>
+
+    <style name="h4" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/h4Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_normal</item>
+        <item name="android:textColor">@color/h4_color</item>
+    </style>
+
+    <style name="h5" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/h5Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_normal</item>
+        <item name="android:textColor">@color/h5_color</item>
+    </style>
+
+    <style name="h6" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/h6Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/h6_color</item>
+    </style>
+
+    <style name="subtitle1" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/subtitle1Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_normal</item>
+        <item name="android:textColor">@color/subtitle1_color</item>
+    </style>
+
+    <style name="subtitle2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/subtitle2Text</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/subtitle2_color</item>
+    </style>
+
+    <style name="body1" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/body1Text</item>
+        <item name="android:letterSpacing">.05</item>
+        <item name="fontFamily">@font/roboto_normal</item>
+        <item name="android:textColor">@color/body1_color</item>
+    </style>
+
+    <style name="body2" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/body2Text</item>
+        <item name="android:letterSpacing">.05</item>
+        <item name="fontFamily">@font/roboto_normal</item>
+        <item name="android:textColor">@color/body2_color</item>
+    </style>
+
+    <style name="button" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/buttonText</item>
+        <item name="android:letterSpacing">.05</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/button_color</item>
+        <item name="android:backgroundTint">@color/btn_color</item>
+    </style>
+
+    <style name="caption" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/captionText</item>
+        <item name="android:letterSpacing">.05</item>
+        <item name="fontFamily">@font/roboto_normal</item>
+        <item name="android:textColor">@color/caption_color</item>
+    </style>
+
+    <style name="overLine" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">@dimen/overLineText</item>
+        <item name="android:letterSpacing">.05</item>
+        <item name="android:textColor">@color/overLine_color</item>
+    </style>
+
+    <style name="DialogTheme" parent="ThemeOverlay.AppCompat.ActionBar" />
+
+</resources>
