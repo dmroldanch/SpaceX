@@ -1,12 +1,17 @@
 package com.aptivist.spacex.di
 
+import android.content.Context
 import com.aptivist.spacex.BuildConfig
 import com.aptivist.spacex.domain.IImageLoader
+import com.aptivist.spacex.domain.framework.GlideImageLoader
 import com.aptivist.spacex.domain.framework.PicassoImageLoader
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,6 +22,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
+
 object AppModule {
 
 
@@ -48,8 +54,19 @@ object AppModule {
     @Singleton
     @Provides
     fun providePicasso() : Picasso = Picasso.get()
+
+    // 😎👈🏼 By Chuy, Diego, Irving and Dan (👍 ͡❛ ͜ʖ ͡❛)👍
+    @Singleton
+    @Provides
+    fun provideGlide(@ApplicationContext context : Context) : RequestManager {
+        return Glide.with(context)
+    }
     
     @Singleton
     @Provides
     fun provideImageLoader(picasso: Picasso) : IImageLoader = PicassoImageLoader(picasso)
+
+   /* @Singleton
+    @Provides
+    fun provideImageLoader(requestManager: RequestManager) : IImageLoader = GlideImageLoader(requestManager)*/
 }

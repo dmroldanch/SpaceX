@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/item_list_fragment"
-        android:name="com.aptivist.maindetail.ItemListFragment"
+        android:name="com.aptivist.spacex.presentation.list.ItemListFragment"
         android:label="SpaceX">
         <action
             android:id="@+id/show_item_detail"
@@ -21,7 +21,7 @@
     </fragment>
     <fragment
         android:id="@+id/item_detail_fragment"
-        android:name="com.aptivist.maindetail.ItemDetailFragment"
+        android:name="com.aptivist.spacex.presentation.detail.ItemDetailFragment"
         android:label="SpaceX"
         tools:layout="@layout/fragment_item_detail">
         <argument

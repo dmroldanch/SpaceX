@@ -61,7 +61,7 @@
                     android:paddingEnd="@dimen/container_horizontal_margin"
                     android:textIsSelectable="true"
                     android:textSize="20dp"
-                    tools:context="com.aptivist.maindetail.ItemDetailFragment" />
+                    tools:context=".presentation.detail.ItemDetailFragment" />
 
                 <TextView
                     android:lines="1"
@@ -73,7 +73,7 @@
                     android:paddingEnd="@dimen/container_horizontal_margin"
                     android:textIsSelectable="true"
                     android:textSize="35dp"
-                    tools:context="com.aptivist.maindetail.ItemDetailFragment" />
+                    tools:context=".presentation.detail.ItemDetailFragment" />
 
                 <TextView
                     android:id="@+id/item_rocket"
@@ -85,7 +85,7 @@
                     android:paddingEnd="@dimen/container_horizontal_margin"
                     android:textIsSelectable="true"
                     android:textSize="20dp"
-                    tools:context="com.aptivist.maindetail.ItemDetailFragment" />
+                    tools:context=".presentation.detail.ItemDetailFragment" />
 
                 <TextView
                     android:id="@+id/item_date"
@@ -98,7 +98,7 @@
                     android:paddingEnd="@dimen/container_horizontal_margin"
                     android:textIsSelectable="true"
                     android:textSize="20dp"
-                    tools:context="com.aptivist.maindetail.ItemDetailFragment" />
+                    tools:context=".presentation.detail.ItemDetailFragment" />
 
 
             </LinearLayout>
@@ -142,7 +142,7 @@
                 android:paddingEnd="@dimen/container_horizontal_margin"
                 android:textIsSelectable="true"
                 android:textSize="18dp"
-                tools:context="com.aptivist.maindetail.ItemDetailFragment" />
+                tools:context=".presentation.detail.ItemDetailFragment" />
 
             <TextView
                 android:id="@+id/item_site"
@@ -155,7 +155,7 @@
                 android:paddingEnd="@dimen/container_horizontal_margin"
                 android:textIsSelectable="true"
                 android:textSize="18dp"
-                tools:context="com.aptivist.maindetail.ItemDetailFragment" />
+                tools:context=".presentation.detail.ItemDetailFragment" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:layout_margin="8dp"
