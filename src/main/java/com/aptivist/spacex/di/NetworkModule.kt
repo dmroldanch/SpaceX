@@ -1,6 +1,6 @@
 package com.aptivist.spacex.di
 
-import com.aptivist.spacex.data.api.spacex.implementations.SpaceXDataSource
+
 import com.aptivist.spacex.data.api.spacex.retrofit.ISpaceXAPI
 import com.aptivist.spacex.domain.ISpaceXDataSource
 import dagger.Module
@@ -16,12 +16,8 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun providePokemonAPI(retrofit: Retrofit) : ISpaceXAPI {
+    fun provideSpaceAPI(retrofit: Retrofit) : ISpaceXAPI {
         return retrofit.create(ISpaceXAPI::class.java)
     }
-
-    @Singleton
-    @Provides
-    fun providePokemonDataSource(pokeAPI: ISpaceXAPI) : ISpaceXDataSource = SpaceXDataSource(pokeAPI)
 
 }

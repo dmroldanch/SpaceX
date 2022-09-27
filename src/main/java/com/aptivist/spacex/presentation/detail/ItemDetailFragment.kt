@@ -20,7 +20,6 @@ import com.aptivist.spacex.presentation.list.ItemListFragmentArgs
 import com.aptivist.spacex.presentation.list.LauchersViewModel
 import com.aptivist.spacex.presentation.list.adapter.ImageAdapter
 import com.aptivist.spacex.presentation.placeholder.PlaceholderContent
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -46,9 +45,6 @@ class ItemDetailFragment : Fragment() {
 
     private lateinit var binding: FragmentItemDetailBinding
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-
 
     private val dragListener = View.OnDragListener { v, event ->
         if (event.action == DragEvent.ACTION_DROP) {
@@ -65,9 +61,6 @@ class ItemDetailFragment : Fragment() {
 
         arguments?.let {
             if (it.containsKey(ARG_ITEM_ID)) {
-                // Load the placeholder content specified by the fragment
-                // arguments. In a real-world scenario, use a Loader
-                // to load content from a content provider.
                 item = PlaceholderContent.ITEM_MAP[it.getString(ARG_ITEM_ID)]
             }
         }
@@ -97,16 +90,12 @@ class ItemDetailFragment : Fragment() {
 
         if(!isLandscape()) {
             args?.let { launcher ->
-
-                try {
+                try{
                     launcher.launch.links?.flickr_images?.get(0)?.let {
-                        imageLoader.loadImage(
-                            it,
-                            itemDetailImageView
-                        )
+                        imageLoader.loadImage(it, itemDetailImageView)
                     }
-                } catch (e: Exception) {
-                    Log.d("Flickr Image", e.message.toString())
+                }catch(e: Exception){
+
                 }
 
                 with(binding) {
@@ -115,24 +104,13 @@ class ItemDetailFragment : Fragment() {
                     itemName?.setTypeface(null, Typeface.BOLD)
                     itemRocket?.text = "Rocket: ${launcher.launch.rocket?.rocket_name}"
                     vpLaunchesImages?.adapter = iconAdapter
-                    try {
-                        val odt: OffsetDateTime =
-                            OffsetDateTime.parse(launcher.launch.launch_date_local)
 
+                    itemDate?.text = launcher.launch.launch_date_local.toString().toDate()
 
-                        val dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu", Locale.US)
-                        val formatted = dtf.format(odt)
-
-                        itemDate?.text = formatted.toString()
-
-                    } catch (e: Exception) {
-                        Log.d("Date", e.message.toString())
-                        itemDate?.text = ""
-                    }
 
                     try {
                         launcher.launch.links?.mission_patch_small?.let {
-                            Picasso.get().load(it).into(imageLogo)
+                            imageLoader.loadImage(it, itemDetailImageView)
                         }
                     } catch (e: Exception) {
 
@@ -149,16 +127,14 @@ class ItemDetailFragment : Fragment() {
         }else {
             launchesViewModel.launchSelected?.let { launcher ->
 
-                try {
-                    launcher.links?.flickr_images?.get(0)?.let {
+
+                    launcher?.links?.flickr_images?.get(0)?.let {
                         imageLoader.loadImage(
                             it,
                             itemDetailImageView
                         )
                     }
-                } catch (e: Exception) {
-                    Log.d("Flickr Image", e.message.toString())
-                }
+
 
                 with(binding) {
 
@@ -166,28 +142,13 @@ class ItemDetailFragment : Fragment() {
                     itemName?.setTypeface(null, Typeface.BOLD)
                     itemRocket?.text = "Rocket: ${launcher.rocket?.rocket_name}"
                     vpLaunchesImages?.adapter = iconAdapter
-                    try {
-                        val odt: OffsetDateTime =
-                            OffsetDateTime.parse(launcher.launch_date_local)
+                    itemDate?.text = launcher.launch_date_local.toString().toDate()
 
 
-                        val dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu", Locale.US)
-                        val formatted = dtf.format(odt)
-
-                        itemDate?.text = formatted.toString()
-
-                    } catch (e: Exception) {
-                        Log.d("Date", e.message.toString())
-                        itemDate?.text = ""
-                    }
-
-                    try {
-                        launcher.links?.mission_patch_small?.let {
-                            Picasso.get().load(it).into(imageLogo)
+                        launcher?.links?.mission_patch_small?.let {
+                            imageLoader.loadImage(it, imageLogo)
                         }
-                    } catch (e: Exception) {
 
-                    }
 
                     itemNumber?.text = launcher.flight_number.toString()
                     itemDescription?.text = launcher.details
@@ -228,5 +189,22 @@ class ItemDetailFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+    }
+
+
+    public fun String.toDate() : String {
+        try {
+            val odt: OffsetDateTime =
+                OffsetDateTime.parse(this)
+
+
+            val dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu", Locale.US)
+            val formatted = dtf.format(odt)
+            return formatted
+
+        } catch (e: Exception) {
+            Log.d("Date", e.message.toString())
+            return ""
+        }
     }
 }

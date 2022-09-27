@@ -66,7 +66,7 @@ object AppModule {
     @Provides
     fun provideImageLoader(picasso: Picasso) : IImageLoader = PicassoImageLoader(picasso)
 
-   /* @Singleton
+    /*@Singleton
     @Provides
     fun provideImageLoader(requestManager: RequestManager) : IImageLoader = GlideImageLoader(requestManager)*/
 }

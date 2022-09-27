@@ -19,7 +19,7 @@ class LaunchesFetchingImpl @Inject constructor(private val spaceXAPI: ISpaceXAPI
                 val body = response.body() ?: emptyList()
                 Resource.Success(body.map{it.toDomain()})
             } else {
-                Resource.Failure("An unexpected error occurred.", null)
+                Resource.Failure(response.errorBody()?.string(), null)
             }
         } catch (e: IOException) {
             Log.d("Exception",e.message.toString())

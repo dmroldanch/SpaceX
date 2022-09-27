@@ -33,12 +33,14 @@ class ItemListFragment : Fragment() {
 
     private val launchesViewModel by viewModels<LauchersViewModel>()
     private val loadingDialogFragment: LoadingDialogFragment by lazy { LoadingDialogFragment.newInstance() }
-    private val adapter = LaunchesListAdapter(::onLaunchSelected)
+    //private val adapter = LaunchesListAdapter(::onLaunchSelected)
     private val navController by lazy { findNavController() }
     @Inject
     lateinit var imageLoader : IImageLoader
 
     private val iconAdapter by lazy { ImageAdapter(imageLoader) }
+
+    private val cardsAdapter by lazy { LaunchesListAdapter(imageLoader,::onLaunchSelected) }
 
 
     private var _binding: FragmentItemListBinding? = null
@@ -50,7 +52,7 @@ class ItemListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentItemListBinding.inflate(inflater, container, false)
-        binding.itemList.adapter = adapter
+        binding.itemList.adapter = cardsAdapter
         binding.itemList.layoutManager = LinearLayoutManager(requireContext())
 
         binding.itemList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -92,7 +94,7 @@ class ItemListFragment : Fragment() {
     private fun setUpObservers() {
 
         launchesViewModel.lauchesListFiltered.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            cardsAdapter.submitList(it)
             //binding.emptyView.showOrGoneAnimatedFade( show = it.isEmpty())
         }
 
@@ -139,18 +141,6 @@ class ItemListFragment : Fragment() {
         with(binding){
             launchesViewModel.launchSelected?.let {
                 vpLaunchesImages?.adapter = iconAdapter
-                try {
-                    val odt: OffsetDateTime =
-                        OffsetDateTime.parse(it.launch_date_local)
-
-
-                    val dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu", Locale.US)
-                    val formatted = dtf.format(odt)
-
-
-                } catch (e: Exception) {
-                    Log.d("Date", e.message.toString())
-                }
 
                 try {
                     it.links?.mission_patch_small?.let {
@@ -169,4 +159,8 @@ class ItemListFragment : Fragment() {
     }
 
     private fun isLandscape() = resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE
+
+
 }
+
+
